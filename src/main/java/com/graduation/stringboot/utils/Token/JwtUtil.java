@@ -22,7 +22,7 @@ public class JwtUtil {
     UserInfoService userInfoService;
 
     @Autowired
-    public JwtUtil(UserInfoService userInfoService) {
+    public void setUserInfoService(UserInfoService userInfoService) {
         this.userInfoService = userInfoService;
     }
 
@@ -83,7 +83,7 @@ public class JwtUtil {
      *
      * @param token 令牌
      * @param key   key
-     * @return int  token验证结果  2-token过期；1-token认证通过；0-token认证失败
+     * @return int  token验证结果  -1-token过期；1-token认证通过；0-token认证失败
      */
     public int verify(String token, String key) {
         Claims claims = null;
@@ -93,7 +93,7 @@ public class JwtUtil {
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {
-            return 2;
+            return -1;
         }
         String id = claims.getId();
         Userinfo userinfo = userInfoService.getUserInfoById(Long.valueOf(id));
