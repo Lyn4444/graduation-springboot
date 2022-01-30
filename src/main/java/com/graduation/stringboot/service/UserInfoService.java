@@ -4,12 +4,12 @@ import com.graduation.stringboot.entity.Result;
 import com.graduation.stringboot.entity.Userinfo;
 import org.apache.ibatis.annotations.Param;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 /**
- * 用户信息登录
+ * 用户信息登录和注册
  *
  * @author Lyn
  * @date 2022/01/29
@@ -82,6 +82,21 @@ public interface UserInfoService {
      * @return {@link Date}
      */
     Date getDateById(@Param("Uid") Long uid);
+
+    /**
+     * 添加用户信息
+     *
+     * @param name     用户名
+     * @param salt     盐值
+     * @param pwdHash  pwdHash
+     * @param phoneNum 电话号码
+     * @param email    电子邮件
+     * @param date     注册日期
+     * @return int
+     */
+    int addUserInfo(@Param("UserName") String name, @Param("Salt") String salt, @Param("PwdHash") String pwdHash,
+                    @Param("PhoneNum") String phoneNum, @Param("Email") String email, @Param("Date") Date date);
+
 
     /**
      * 通过id获取用户信息（测试样例）

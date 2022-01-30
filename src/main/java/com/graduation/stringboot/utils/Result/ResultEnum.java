@@ -1,4 +1,4 @@
-package com.graduation.stringboot.utils;
+package com.graduation.stringboot.utils.Result;
 
 /**
  * 结果枚举类

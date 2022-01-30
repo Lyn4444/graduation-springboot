@@ -1,4 +1,4 @@
-package com.graduation.stringboot.utils;
+package com.graduation.stringboot.utils.Result;
 
 import com.graduation.stringboot.entity.Result;
 

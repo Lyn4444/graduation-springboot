@@ -1,16 +1,14 @@
 package com.graduation.stringboot.service;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.graduation.stringboot.entity.Result;
 import com.graduation.stringboot.entity.Userinfo;
 import com.graduation.stringboot.mapper.UserInfoMapper;
-import com.graduation.stringboot.utils.ResultUtil;
+import com.graduation.stringboot.utils.MapUtil;
+import com.graduation.stringboot.utils.Result.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -114,6 +112,22 @@ public class UserInfoServiceImpl implements UserInfoService{
     }
 
     /**
+     * 添加用户信息
+     *
+     * @param name     用户名
+     * @param salt     盐值
+     * @param pwdHash  pwdHash
+     * @param phoneNum 电话号码
+     * @param email    电子邮件
+     * @param date     注册日期
+     * @return int
+     */
+    @Override
+    public int addUserInfo(String name, String salt, String pwdHash, String phoneNum, String email, java.util.Date date) {
+        return 0;
+    }
+
+    /**
      * 通过id获取用户信息（测试样例）
      *
      * @param uid uid
@@ -148,13 +162,7 @@ public class UserInfoServiceImpl implements UserInfoService{
             for (int i = 0; i < list.size(); i++) {
                 Map<String, Object> tmp = new HashMap<>();
                 Userinfo userinfo = list.get(i);
-                tmp.put("uid", userinfo.getUid());
-                tmp.put("UserName", userinfo.getUserName());
-                tmp.put("Salt", userinfo.getSalt());
-                tmp.put("PwdHash", userinfo.getPwdHash());
-                tmp.put("PhoneNum", userinfo.getPhoneNum());
-                tmp.put("Email", userinfo.getEmail());
-                tmp.put("Date", userinfo.getDate());
+                tmp = MapUtil.stringSplit(userinfo.toString());
                 res.put(String.valueOf(i),tmp);
             }
             return ResultUtil.success(res);

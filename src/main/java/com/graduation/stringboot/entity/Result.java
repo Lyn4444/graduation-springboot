@@ -1,8 +1,6 @@
 package com.graduation.stringboot.entity;
 
-import com.graduation.stringboot.utils.ResultEnum;
-
-import java.io.Serializable;
+import com.graduation.stringboot.utils.Result.ResultEnum;
 
 /**
  * 结果类
